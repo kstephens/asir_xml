@@ -1,6 +1,6 @@
-# AsirXml
+# asir_xml
 
-TODO: Write a gem description
+XML Coder for ASIR
 
 ## Installation
 
@@ -18,7 +18,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+See example/.
+
+## Dependencies
+
+Requires install of libxml, libxslt for XML support: rake prereq.
 
 ## Contributing
 

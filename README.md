@@ -1,5 +1,10 @@
 # asir_xml
 
+[![Build
+Status](https://secure.travis-ci.org/kstephens/asir_xml.png?branch=master)](http://travis-ci.org/kstephens/asir_xml)
+[![Code
+Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/kstephens/asir_xml)
+
 XML Coder for ASIR
 
 ## Installation

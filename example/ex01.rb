@@ -1,5 +1,5 @@
 # !SLIDE :capture_code_output true
-# Synchronous HTTP service
+# Synchronous HTTP/XML service.
 
 require 'example_helper'
 module App; include ASIR::Client; end

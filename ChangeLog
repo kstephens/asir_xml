@@ -1,0 +1,5 @@
+2012-12-28  Kurt A. Stephens  <ks.github@kurtstephens.com>
+
+	* v1.1.10: New version.
+	* XML: Really removed Coder::XML from asir 1.1.10.
+

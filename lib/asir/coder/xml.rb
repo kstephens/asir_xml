@@ -1,7 +1,5 @@
 require 'asir'
 require 'asir/object_resolving'
-gem 'libxml-ruby'
-require 'xml'
 
 module ASIR
   class Coder
@@ -28,8 +26,8 @@ module ASIR
         @dom_id_map = { }
         @dom_id = 0
         @cls_tag_map = { }
-        @parser = ::XML::Parser.string(@stream)
-        @dom = @parser.parse
+        @parser = Parser.new
+        @dom = @parser.parse(@stream)
         decode_dom @dom.root
       end
 
@@ -213,3 +211,5 @@ module ASIR
     # !SLIDE END
   end
 end
+
+require 'asir/coder/xml/parser'

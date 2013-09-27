@@ -39,9 +39,9 @@ def server_process &blk
     else
       $stderr.puts "  spawning at #{__FILE__}:#{__LINE__}"
       ENV['ASIR_JRUBY_SPAWNED'] = "1"
-      cmd = "ruby -I #{File.dirname(__FILE__)} -I #{File.expand_path('../../lib', __FILE__)} #{$0} #{ARGV * ' '}"
-      $stderr.puts "  cmd = #{cmd}"
-      $server_pid = Spoon.spawnp(cmd)
+      cmd = [ "jruby", "-I", "#{File.dirname(__FILE__)}", "-I", "#{File.expand_path('../../lib', __FILE__)}", "#{$0}", *ARGV ]
+      $stderr.puts "  cmd = #{cmd * ' '}"
+      $server_pid = Spoon.spawnp(*cmd)
       ENV.delete('ASIR_JRUBY_SPAWNED')
       $stderr.puts "  spawned #{$server_pid} at #{__FILE__}:#{__LINE__}"
     end

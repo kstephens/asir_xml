@@ -48,7 +48,7 @@ describe "ASIR Example" do
     exc = system_exit = nil; exit_code = 0
     begin
       if true
-        cmd = "ASIR_EXAMPLE_SILENT=1 ruby -I example -I lib #{file}"
+        cmd = "ASIR_EXAMPLE_SILENT=1 #{ruby} -I example -I lib #{file}"
         $stderr.puts "\n   Running #{cmd}:" if ENV['SPEC_VERBOSE']
         output = `#{cmd} 2>&1 | tee #{file}.out`
       else
@@ -72,6 +72,18 @@ describe "ASIR Example" do
       stderr_save.puts "ERROR: #{file}: #{exc.inspect}\n#{exc.backtrace * "\n"}"
       raise exc
     end
+  end
+
+  require 'rbconfig'
+  RUBY_INTERPRETER_PATH = File.join(RbConfig::CONFIG["bindir"],
+                               RbConfig::CONFIG["RUBY_INSTALL_NAME"] +
+                               RbConfig::CONFIG["EXEEXT"])
+
+  case (RUBY_PLATFORM rescue "UNKNOWN")
+  when /java/i
+    def ruby; RUBY_INTERPRETER_PATH; end
+  else
+    def ruby; 'ruby'; end
   end
 
   def expect rx, mode = :'=~'

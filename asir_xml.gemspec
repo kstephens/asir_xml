@@ -18,9 +18,14 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "asir", ">= 1.1.10"
-  gem.add_dependency "libxml-ruby", "~> 2.3.3"
+
+  case (RUBY_PLATFORM rescue "UNKNOWN")
+  when /java/i
+  else
+    gem.add_dependency "libxml-ruby", "~> 2.3.3"
+  end
 
   gem.add_development_dependency 'rake', '>= 0.9.0'
-  gem.add_development_dependency 'rspec', '~> 2.12.0'
+  gem.add_development_dependency 'rspec', '~> 2.14.0'
   gem.add_development_dependency 'simplecov', '>= 0.1'
 end

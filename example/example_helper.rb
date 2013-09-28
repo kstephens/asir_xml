@@ -39,7 +39,7 @@ def server_process &blk
     else
       $stderr.puts "  spawning at #{__FILE__}:#{__LINE__}"
       ENV['ASIR_JRUBY_SPAWNED'] = "1"
-      cmd = [ "jruby", "-I", "#{File.dirname(__FILE__)}", "-I", "#{File.expand_path('../../lib', __FILE__)}", "#{$0}", *ARGV ]
+      cmd = [ RUBY_INTERPRETER_PATH, "-I", "#{File.dirname(__FILE__)}", "-I", "#{File.expand_path('../../lib', __FILE__)}", "#{$0}", *ARGV ]
       $stderr.puts "  cmd = #{cmd * ' '}"
       $server_pid = Spoon.spawnp(*cmd)
       ENV.delete('ASIR_JRUBY_SPAWNED')
@@ -66,7 +66,12 @@ ensure
   $server_pid = nil
 end
 
+require 'rbconfig'
+RUBY_INTERPRETER_PATH = File.join(RbConfig::CONFIG["bindir"],
+                             RbConfig::CONFIG["RUBY_INSTALL_NAME"] +
+                             RbConfig::CONFIG["EXEEXT"])
 end
+
 
 puts "*** #{$$}: client process"; $stdout.flush
 

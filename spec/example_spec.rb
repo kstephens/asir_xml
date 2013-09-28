@@ -79,12 +79,7 @@ describe "ASIR Example" do
                                RbConfig::CONFIG["RUBY_INSTALL_NAME"] +
                                RbConfig::CONFIG["EXEEXT"])
 
-  case (RUBY_PLATFORM rescue "UNKNOWN")
-  when /java/i
-    def ruby; RUBY_INTERPRETER_PATH; end
-  else
-    def ruby; 'ruby'; end
-  end
+  def ruby; RUBY_INTERPRETER_PATH; end
 
   def expect rx, mode = :'=~'
     @expects << [ rx, mode ]

@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   when /java/i
     gem.add_development_dependency 'spoon', '>= 0.0'
   else
-    gem.add_dependency "libxml-ruby", "~> 2.3.3"
+    gem.add_dependency "libxml-ruby", "~> 2.7.0"
   end
 
   gem.add_development_dependency 'rake', '>= 0.9.0'

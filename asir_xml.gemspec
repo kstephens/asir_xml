@@ -21,6 +21,7 @@ Gem::Specification.new do |gem|
 
   case (RUBY_PLATFORM rescue "UNKNOWN")
   when /java/i
+    gem.add_development_dependency 'spoon', '>= 0.0'
   else
     gem.add_dependency "libxml-ruby", "~> 2.3.3"
   end

@@ -44,6 +44,7 @@ def server_process &blk
       $server_pid = Spoon.spawnp(*cmd)
       ENV.delete('ASIR_JRUBY_SPAWNED')
       $stderr.puts "  spawned #{$server_pid} at #{__FILE__}:#{__LINE__}"
+      sleep 10
     end
   else
     # $stderr.puts "  at #{__FILE__}:#{__LINE__}"

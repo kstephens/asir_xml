@@ -78,8 +78,7 @@ module ASIR
           def parse stream
             case stream
             when String
-              parser = ::XML::Parser.string(stream)
-              parser.parse
+              ::XML::Parser.string(stream).parse
             else
               raise TypeError, "cannot parse #{stream.class.name}"
             end
